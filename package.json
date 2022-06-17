@@ -1,0 +1,22 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "Приклад інформаційної системи для виконання завдань Навчальної обчислювальної практики",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andrashko/practice.git"
+  },
+  "keywords": [
+    "практика"
+  ],
+  "author": "Yurii Andrashko <yurii.andrashko@uzhnu.edu.ua>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andrashko/practice/issues"
+  },
+  "homepage": "https://github.com/Andrashko/practice#readme"
+}
