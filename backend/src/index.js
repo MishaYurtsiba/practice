@@ -1,20 +1,16 @@
 const express = require("express");
 const faqRouter = require("./faq");
+const cors = require("cors");
 
 const app = express();
 
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-
-//FAQ
-
-//MVC - Model Vue Controller
+app.use(cors({}));
 
 app.use("/faq", faqRouter);
 app.get("*", (req, res) => {
-  res.send("Hello");
+  res.status(404).send("Wrong request");
 });
 
 app.listen(3000, () => {
