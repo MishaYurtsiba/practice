@@ -23,6 +23,7 @@ const faqController = {
     },
     post: (req, res) => {
         let newFaq = req.body;
+        console.log(req.body);
         let result = faqModel.create(newFaq);
         res.send(result);
     },

@@ -4,10 +4,11 @@
 
 <script>
 import faqList from "@/components/faqList.vue";
+
 export default {
   name: "HomePage",
   components: {
-    faqList,
+    faqList
   },
 };
 </script>
