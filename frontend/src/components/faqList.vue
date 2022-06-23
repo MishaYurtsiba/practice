@@ -28,7 +28,6 @@ export default {
   },
   async mounted() {
     await this.loadData();
-    console.log(this.faqs);
   },
 };
 </script>

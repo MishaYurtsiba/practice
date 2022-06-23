@@ -24,14 +24,14 @@ export default {
     data() {
         return {
             faq: {
-                question: "q",
-                answer: "a"
+                question: "",
+                answer: ""
             }
         }
     },
     methods: {
         async createFaq() {
-            this.faq = await network.makeRequest("faq", "POST", { ...this.faq });
+            this.faq = await network.makeRequest("faq", "POST", this.faq );
             alert("Додано");
             setTimeout(() => this.$router.push("/"), 1000);
         }

@@ -1,8 +1,18 @@
 export default {
-  makeRequest: async function (path, method = "GET", body = null) {
+  makeRequest: async function (path, method = "GET", data = null) {
     try {
-      console.log(body);
-      const resp = await fetch(`http://localhost:3000/${path}`, { method, body});
+      if (data) {
+        var options = {
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+      }
+      const resp = await fetch(`http://localhost:3000/${path}`, {
+        method,
+        ...options,
+      });
       if (!resp.ok) {
         alert(`помилка ${resp.status}`);
         return null;
