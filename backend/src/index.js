@@ -1,22 +1,31 @@
 const express = require("express");
 const faqRouter = require("./faq");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
-const app = express();
+mongoose
+  .connect(
+    "mongodb+srv://student:i295Anz59j94lTIE@cluster0.n9t74.gcp.mongodb.net/faqDB?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    console.log("Connected to database");
+    
+    const app = express();
 
+    app.use(express.urlencoded({ extended: false }));
+    app.use(express.json());
+    app.use(cors({}));
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+    app.use("/faq", faqRouter);
+    app.get("*", (req, res) => {
+      res.status(404).send("Wrong request");
+    });
 
-
-//FAQ
-
-//MVC - Model Vue Controller
-
-app.use("/faq", faqRouter);
-app.get("*", (req, res) => {
-  res.send("Hello");
-});
-
-app.listen(3000, () => {
-  console.log("Server started on http://localhost:3000");
-});
+    app.listen(3000, () => {
+      console.log("Server started on http://localhost:3000");
+    });
+  });

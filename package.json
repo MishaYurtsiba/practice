@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "concurrently \"npm run installfrontend\" \"npm run installbackend\"",
+    "start": "concurrently \"npm run startfrontend\" \"npm run startbackend\"",
     "installfrontend": "cd frontend && npm install",
-    "installbackend": "cd backend && npm install"
+    "installbackend": "cd backend && npm install",
+    "startbackend": "cd backend && npm start",
+    "startfrontend": "cd frontend && npm run serve"
   },
   "repository": {
     "type": "git",
