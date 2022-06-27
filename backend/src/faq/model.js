@@ -9,11 +9,11 @@ const faqSchema = new mongoose.Schema({
   answer: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
   },
-  count:{
-    type:Number,
-    default:0
+  count: {
+    type: Number,
+    default: 0
   }
 });
 

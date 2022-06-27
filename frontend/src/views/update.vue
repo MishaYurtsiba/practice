@@ -1,6 +1,6 @@
 <template>
   <h1>Редагування</h1>
-  <form v-on:submit.prevent>
+  <form @submit.prevent>
     <label>
       Запитання
       <input name="question" v-model="faq.question" />
@@ -23,9 +23,9 @@ export default {
     return {
       faq: {
         question: "",
-        answer: "",
+        answer: ""
       },
-      id: parseInt(this.$route.params.id),
+      id: this.$route.params.id,
     };
   },
   async mounted() {

@@ -18,10 +18,10 @@ export default {
   },
   computed: {
     deleteLink() {
-      return `/delete/${this.faq.id}`;
+      return `/delete/${this.faq._id}`;
     },
     updateLink() {
-      return `/update/${this.faq.id}`;
+      return `/update/${this.faq._id}`;
     },
   },
 };

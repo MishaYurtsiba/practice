@@ -20,7 +20,7 @@ export default {
   name: "DeleteFaq",
   data() {
     return {
-      id: parseInt(this.$route.params.id),
+      id: this.$route.params.id,
       faq: null,
       isDeleted: false,
     };

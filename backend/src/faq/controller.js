@@ -17,15 +17,18 @@ const faqController = {
     const faq = await newFaq.save();
     res.send(faq);
   },
-  put: (req, res) => {
-    const id = parseInt(req.params.id);
-    let modifiedFaq = faqModel.update(req.body, id);
+  put: async (req, res) => {
+    console.log(req.body);
+    let modifiedFaq = await faqModel.findByIdAndUpdate(req.params.id,
+      req.body,
+      {
+        returnOriginal: false
+      })
     if (modifiedFaq) res.send(modifiedFaq);
     else res.status(404).send("Not found");
   },
-  delete: (req, res) => {
-    const id = parseInt(req.params.id);
-    const deletedFaq = faqModel.delete(id);
+  delete: async (req, res) => {
+    const deletedFaq = await faqModel.findByIdAndDelete(req.params.id);
     if (deletedFaq) res.send(deletedFaq);
     else res.status(404).send("Not found");
   },

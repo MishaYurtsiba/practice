@@ -12,7 +12,7 @@ mongoose
     }
   )
   .then(() => {
-    console.log("Connekted to database");
+    console.log("Connected to database");
     const app = express();
 
     app.use(express.urlencoded({ extended: false }));
