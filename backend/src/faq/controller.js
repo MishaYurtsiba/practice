@@ -3,14 +3,26 @@
 const faqModel = require("./model");
 
 const faqController = {
-  get: async (req, res) => {
-    let faqs = await faqModel.find({});
+  get: async function (req, res) {
+    function buildQueryObject(query) {
+      let result = {};
+      if (query.question)
+        result.question = {
+          $regex: query.question,
+          $options: 'i'
+        };
+      return result;
+    }
+    let faqs = await faqModel.find(buildQueryObject(req.query));
     res.send(faqs);
   },
   getById: async (req, res) => {
     let faq = await faqModel.findById(req.params.id);
-    if (faq) res.send(faq);
-    else res.status(404).send("Not found");
+    if (faq) {
+      faq.count++;
+      await faq.save();
+      res.send(faq);
+    } else res.status(404).send("Not found");
   },
   post: async (req, res) => {
     const newFaq = new faqModel(req.body);
@@ -19,11 +31,13 @@ const faqController = {
   },
   put: async (req, res) => {
     console.log(req.body);
-    let modifiedFaq = await faqModel.findByIdAndUpdate(req.params.id,
+    let modifiedFaq = await faqModel.findByIdAndUpdate(
+      req.params.id,
       req.body,
       {
-        returnOriginal: false
-      })
+        returnOriginal: false,
+      }
+    );
     if (modifiedFaq) res.send(modifiedFaq);
     else res.status(404).send("Not found");
   },
