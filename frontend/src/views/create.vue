@@ -11,6 +11,11 @@
             <input name="answer" v-model="faq.answer">
         </label>
         <br>
+        <label>
+            URL відео
+            <input name="video" v-model="faq.video" />
+        </label>
+        <br />
         <button @click="createFaq">
             Створити
         </button>
@@ -25,13 +30,14 @@ export default {
         return {
             faq: {
                 question: "",
-                answer: ""
+                answer: "",
+                video:""
             }
         }
     },
     methods: {
         async createFaq() {
-            this.faq = await network.makeRequest("faq", "POST", this.faq );
+            this.faq = await network.makeRequest("faq", "POST", this.faq);
             alert("Додано");
             setTimeout(() => this.$router.push("/"), 1000);
         }

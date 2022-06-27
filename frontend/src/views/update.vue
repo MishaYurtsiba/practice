@@ -11,6 +11,11 @@
       <input name="answer" v-model="faq.answer" />
     </label>
     <br />
+    <label>
+      URL відео
+      <input name="video" v-model="faq.video" />
+    </label>
+    <br />
     <button @click="updateFaq">редгувати</button>
   </form>
 </template>
@@ -23,7 +28,8 @@ export default {
     return {
       faq: {
         question: "",
-        answer: ""
+        answer: "",
+        video:""
       },
       id: this.$route.params.id,
     };

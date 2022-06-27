@@ -25,12 +25,15 @@ const faqController = {
     } else res.status(404).send("Not found");
   },
   post: async (req, res) => {
-    const newFaq = new faqModel(req.body);
-    const faq = await newFaq.save();
-    res.send(faq);
+    try {
+      const newFaq = new faqModel(req.body);
+      const faq = await newFaq.save();
+      res.send(faq);
+    } catch (err) {
+      res.status(403).send(err);
+    }
   },
   put: async (req, res) => {
-    console.log(req.body);
     let modifiedFaq = await faqModel.findByIdAndUpdate(
       req.params.id,
       req.body,

@@ -2,6 +2,7 @@
   <li>
     <p>{{ faq.question }}</p>
     <p>{{ faq.answer }}</p>
+    <a :href="faq.video" v-if="faq.video"> Перейти до перегляду відео</a>
     <router-link :to="deleteLink"> вилучити </router-link>
     <router-link :to="updateLink"> редгувати </router-link>
   </li>
