@@ -1,5 +1,5 @@
 <template>
-  <faq-list></faq-list>
+  <faq-list ></faq-list>
 </template>
 
 <script>
@@ -14,4 +14,5 @@ export default {
 </script>
 
 <style>
+
 </style>

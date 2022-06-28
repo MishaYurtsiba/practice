@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Список</h2>
-    <ul>
+    <h2 class="h2">Список</h2>
+    <ul class="card-list">
       <faq-item v-for="faq in faqs" :key="faq.id" v-bind:faq="faq"> </faq-item>
     </ul>
   </div>
@@ -33,4 +33,10 @@ export default {
 </script>
 
 <style>
+
+.h2{
+  color: #393D31;
+  margin-left: 200px;
+}
+
 </style>
